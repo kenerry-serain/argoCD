@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-  repoURL: https://github.com/kenerry-serain/argoCD.git
-  targetRevision: HEAD
-  path: dev
+    repoURL: https://github.com/kenerry-serain/argoCD.git
+    targetRevision: HEAD
+    path: dev
   destination:
     server: https://kubernetes.default.svc
     namespace: kenerry

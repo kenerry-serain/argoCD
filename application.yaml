@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp-argo-application
+  namespace: argocd
+spec:
+  project: default
+  source:
+  repoURL: https://github.com/kenerry-serain/argoCD.git
+  targetRevision: HEAD
+  path: dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kenerry
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true #override manual changes in the cluster
+      prune: true #rename or delete service we want argocd delete too
+
+
+      #Pode se ficar fazendo polling ou configurar um webhook no git repositório.Default is polling
